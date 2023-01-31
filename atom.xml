@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://gaclove.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://gaclove.github.io/"/>
+  <updated>2023-01-31T07:46:21.032Z</updated>
+  <id>http://gaclove.github.io/</id>
+  
+  <author>
+    <name>gaopeng</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GCC常用选项</title>
+    <link href="http://gaclove.github.io/GCC%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9/"/>
+    <id>http://gaclove.github.io/GCC%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9/</id>
+    <published>2018-04-30T12:28:18.000Z</published>
+    <updated>2023-01-31T07:46:21.032Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="命令常用"><a class="markdownIt-Anchor" href="#命令常用"></a> 命令常用</h2><p>Gcc 命令本身就有很多可以使用文档， 如果对编译和链接过程需要有详细控制的，可以细看 gcc 文档</p><pre class="line-numbers language-none"><code class="language-none">gcc -dumpmachine # 打印当前机器信息, 示例： # output: x86_64-linux-gnugcc -print-search-dirs # 打印搜索路径gcc --help&#x3D;target # 可以查看可以详细控制的选项# 查看当前C++编译器 ABI 兼容问题, 参考： # https:&#x2F;&#x2F;gcc.gnu.org&#x2F;onlinedocs&#x2F;libstdc++&#x2F;manual&#x2F;using_dual_abi.htmlecho &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep _GLIBCXX_USE_CXX11_ABI# 查看当前C++编译器是否支持symbol version# https:&#x2F;&#x2F;refspecs.linuxfoundation.org&#x2F;LSB_3.0.0&#x2F;LSB-PDA&#x2F;LSB-PDA.junk&#x2F;symversion.htmlecho &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep  _GLIBCXX_SYMVER  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="编译常见"><a class="markdownIt-Anchor" href="#编译常见"></a> 编译常见</h2><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="安全相关的编译选项"><a class="markdownIt-Anchor" href="#安全相关的编译选项"></a> 安全相关的编译选项</h2><p>在编译器层面，gcc提供了不少安全方面的编译选项，主要有：</p><pre class="line-numbers language-none"><code class="language-none"># NX(DEP)-z execstack  # 禁用NX保护-z noexecstack # 开启NX保护| 堆栈禁止执行 # RELRO-z norelro # 关闭-z lazy # 部分开启-z now # 全部开启| GOT写保护 # CANARY-fno -stack-protector # 禁用-fstack-protector # 开启-fstack-protector-all # 完全开启| 堆栈溢出哨兵 # FORTIFY-D_FORTIFY_SOURCE &#x3D;1 # 较弱的检查-D_FORTIFY_SOURCE&#x3D;2 # 较强的检查| 常用函数加强检查 # PIE(ASLR)-fpie -pie # 开启PIE，此时强度为1-fPIE -pie # 开启PIE，此时为最高强度2| 代码段、数据段地址随机化 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="ref"><a class="markdownIt-Anchor" href="#ref"></a> Ref</h2><ul><li><a href="https://blog.csdn.net/pwl999/article/details/111035160">Gcc 安全编译选项</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;命令常用&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#命令常用&quot;&gt;&lt;/a&gt; 命令常用&lt;/h2&gt;
+&lt;p&gt;Gcc 命令本身就有很多可以使用文档， 如果对编译和链接过程需要有详细控制的，可以细看 gcc 文档&lt;/p&gt;
+&lt;pre class=</summary>
+      
+    
+    
+    
+    <category term="GCC" scheme="http://gaclove.github.io/categories/GCC/"/>
+    
+    
+    <category term="Linux GCC" scheme="http://gaclove.github.io/tags/Linux-GCC/"/>
+    
+  </entry>
+  
+</feed>
