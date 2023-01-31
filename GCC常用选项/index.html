@@ -26,7 +26,7 @@
 <meta property="og:description" content="命令常用 Gcc 命令本身就有很多可以使用文档， 如果对编译和链接过程需要有详细控制的，可以细看 gcc 文档  gcc -dumpmachine # 打印当前机器信息, 示例：  # output: x86_64-linux-gnu  gcc -print-search-dirs # 打印搜索路径   gcc --help&#x3D;target # 可以查看可以详细控制的选项  # 查看当前">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-04-30T12:28:18.000Z">
-<meta property="article:modified_time" content="2023-01-31T07:52:08.463Z">
+<meta property="article:modified_time" content="2023-01-31T08:16:56.520Z">
 <meta property="article:author" content="gaopeng">
 <meta property="article:tag" content="Linux GCC">
 <meta name="twitter:card" content="summary">
@@ -61,7 +61,7 @@
           <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
         </a>
         <h2 id="name" class="hidden-xs hidden-sm">NaiveMan</h2>
-        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Code</h3>
         <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
       </div>
       
@@ -386,8 +386,8 @@ echo &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep  _GLIBCXX_S
         </a>
       </div>
       <div class="media-body">
-        <h3 class="media-heading"><a href="https://github.com/gaclove" target="_blank"><span class="text-dark">NaiveMan</span><small class="ml-1x">Developer</small></a></h3>
-        <div>个人简介。</div>
+        <h3 class="media-heading"><a href="https://github.com/gaclove" target="_blank"><span class="text-dark">NaiveMan</span><small class="ml-1x">Code</small></a></h3>
+        <div>框架开发</div>
       </div>
     </figure>
   </div>
@@ -400,7 +400,9 @@ echo &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep  _GLIBCXX_S
     
   <section id="comments">
   	
-      <div id="vcomments"></div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81ODAwMi8zNDQ2NQ==">
+        <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>    
     
   </section>
 
@@ -489,29 +491,20 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
    
     
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/valine"></script>
-  <script type="text/javascript">
-  var GUEST = ['nick', 'mail', 'link'];
-  var meta = 'nick,mail,link';
-  meta = meta.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#vcomments',
-    verify: false,
-    notify: false,
-    appId: '',
-    appKey: '',
-    placeholder: 'Just go go',
-    avatar: 'mm',
-    meta: meta,
-    pageSize: '10' || 10,
-    visitor: false
-  });
-  </script>
+<script defer type="text/javascript">
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
 
-     
+    if (typeof LivereTower === 'function') { return; }
+
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
 
 
 
