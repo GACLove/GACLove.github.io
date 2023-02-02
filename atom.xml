@@ -6,7 +6,7 @@
   <link href="http://gaclove.github.io/atom.xml" rel="self"/>
   
   <link href="http://gaclove.github.io/"/>
-  <updated>2023-01-31T08:33:38.560Z</updated>
+  <updated>2023-02-02T06:00:49.520Z</updated>
   <id>http://gaclove.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CUDA常见错误排查</title>
+    <link href="http://gaclove.github.io/CUDA%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/"/>
+    <id>http://gaclove.github.io/CUDA%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%8E%92%E6%9F%A5/</id>
+    <published>2019-12-27T13:18:12.000Z</published>
+    <updated>2023-02-02T06:00:49.520Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常见的错误说明"><a class="markdownIt-Anchor" href="#常见的错误说明"></a> 常见的错误说明</h2><p><a href="https://zhuanlan.zhihu.com/p/360727546">https://zhuanlan.zhihu.com/p/360727546</a></p><h2 id="排查工具"><a class="markdownIt-Anchor" href="#排查工具"></a> 排查工具</h2><ul><li>cuda-memcheck，在cuda11.0 之后就不建议使用了。</li><li>CUDA11.0 之后提供了 compute-sanitizer, 具体使用参考官方示例： <a href="https://github.com/NVIDIA/compute-sanitizer-samples">https://github.com/NVIDIA/compute-sanitizer-samples</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;常见的错误说明&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#常见的错误说明&quot;&gt;&lt;/a&gt; 常见的错误说明&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/360727546&quot;&gt;https://</summary>
+      
+    
+    
+    
+    <category term="NVIDIA" scheme="http://gaclove.github.io/categories/NVIDIA/"/>
+    
+    
+    <category term="NVIDIA" scheme="http://gaclove.github.io/tags/NVIDIA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>nvidia-smi常用命令</title>
     <link href="http://gaclove.github.io/nvidia-smi%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
     <id>http://gaclove.github.io/nvidia-smi%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</id>
     <published>2018-07-30T12:28:18.000Z</published>
-    <updated>2023-01-31T08:33:38.560Z</updated>
+    <updated>2023-02-02T06:00:49.520Z</updated>
     
     <content type="html"><![CDATA[<h2 id="支持的可选项"><a class="markdownIt-Anchor" href="#支持的可选项"></a> 支持的可选项</h2><pre class="line-numbers language-text" data-language="text"><code class="language-text">MEMORY, UTILIZATION, ECC, TEMPERATURE, POWER, CLOCK,COMPUTE, PIDS, PERFORMANCE, SUPPORTED_CLOCKS,PAGE_RETIREMENT, ACCOUNTING, ENCODER_STATS,SUPPORTED_GPU_TARGET_TEMP, VOLTAGEFBC_STATS, ROW_REMAPPER 查询某项的值nvidia-smi -q -d &lt;xxx>示例：#查询MEM,SM 最大频率 nvidia-smi -q -d CLOCK <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="设置mem-sm-频率用于性能测试"><a class="markdownIt-Anchor" href="#设置mem-sm-频率用于性能测试"></a> 设置MEM, SM 频率（用于性能测试）</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查询当前卡的频率</span>nvidia-smi <span class="token parameter variable">-q</span> <span class="token parameter variable">-d</span> CLOCK <span class="token comment"># 锁定频率</span>nvidia-smi <span class="token parameter variable">-ac</span> <span class="token number">5001,1590</span><span class="token comment"># 重置到 auto</span>nvidia-smi <span class="token parameter variable">-rac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="windows上多个cuda切换"><a class="markdownIt-Anchor" href="#windows上多个cuda切换"></a> Windows上多个CUDA切换</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># window 平台切换 cuda 版本 (powershell)</span><span class="token variable">$env</span>:CUDA_PATH<span class="token operator">=</span><span class="token string">"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA<span class="token entity" title="\v">\v</span>&lt;xxx>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h2 id="查询gpu各资源的利用率"><a class="markdownIt-Anchor" href="#查询gpu各资源的利用率"></a> 查询GPU各资源的利用率</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 间隔1s 输出0号卡各状态</span>nvidia-smi dmon <span class="token parameter variable">-i</span> <span class="token number">0</span> <span class="token parameter variable">-d</span> <span class="token number">1</span>输出示例:<span class="token comment"># gpu   pwr gtemp mtemp    sm   mem   enc   dec  mclk  pclk</span><span class="token comment"># Idx     W     C     C     %     %     %     %   MHz   MHz</span>    <span class="token number">0</span>    <span class="token number">15</span>    <span class="token number">88</span>     -     <span class="token number">0</span>     <span class="token number">7</span>     <span class="token number">0</span>     <span class="token number">0</span>   <span class="token number">405</span>   <span class="token number">139</span>    <span class="token number">0</span>    <span class="token number">11</span>    <span class="token number">88</span>     -     <span class="token number">0</span>     <span class="token number">6</span>     <span class="token number">0</span>     <span class="token number">0</span>   <span class="token number">405</span>   <span class="token number">151</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
     
@@ -46,7 +71,7 @@
     <link href="http://gaclove.github.io/GCC%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9/"/>
     <id>http://gaclove.github.io/GCC%E5%B8%B8%E7%94%A8%E9%80%89%E9%A1%B9/</id>
     <published>2018-04-30T12:28:18.000Z</published>
-    <updated>2023-01-31T08:33:38.560Z</updated>
+    <updated>2023-02-02T06:00:49.520Z</updated>
     
     <content type="html"><![CDATA[<h2 id="命令常用"><a class="markdownIt-Anchor" href="#命令常用"></a> 命令常用</h2><p>Gcc 命令本身就有很多可以使用文档， 如果对编译和链接过程需要有详细控制的，可以细看 gcc 文档</p><pre class="line-numbers language-none"><code class="language-none">gcc -dumpmachine # 打印当前机器信息, 示例： # output: x86_64-linux-gnugcc -print-search-dirs # 打印搜索路径gcc --help&#x3D;target # 可以查看可以详细控制的选项# 查看当前C++编译器 ABI 兼容问题, 参考： # https:&#x2F;&#x2F;gcc.gnu.org&#x2F;onlinedocs&#x2F;libstdc++&#x2F;manual&#x2F;using_dual_abi.htmlecho &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep _GLIBCXX_USE_CXX11_ABI# 查看当前C++编译器是否支持symbol version# https:&#x2F;&#x2F;refspecs.linuxfoundation.org&#x2F;LSB_3.0.0&#x2F;LSB-PDA&#x2F;LSB-PDA.junk&#x2F;symversion.htmlecho &#39;#include &lt;string&gt; &#39; | g++ -dM -E -x c++ - | grep  _GLIBCXX_SYMVER  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="编译常见"><a class="markdownIt-Anchor" href="#编译常见"></a> 编译常见</h2><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="安全相关的编译选项"><a class="markdownIt-Anchor" href="#安全相关的编译选项"></a> 安全相关的编译选项</h2><p>在编译器层面，gcc提供了不少安全方面的编译选项，主要有：</p><pre class="line-numbers language-none"><code class="language-none"># NX(DEP)-z execstack  # 禁用NX保护-z noexecstack # 开启NX保护| 堆栈禁止执行 # RELRO-z norelro # 关闭-z lazy # 部分开启-z now # 全部开启| GOT写保护 # CANARY-fno -stack-protector # 禁用-fstack-protector # 开启-fstack-protector-all # 完全开启| 堆栈溢出哨兵 # FORTIFY-D_FORTIFY_SOURCE &#x3D;1 # 较弱的检查-D_FORTIFY_SOURCE&#x3D;2 # 较强的检查| 常用函数加强检查 # PIE(ASLR)-fpie -pie # 开启PIE，此时强度为1-fPIE -pie # 开启PIE，此时为最高强度2| 代码段、数据段地址随机化 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="ref"><a class="markdownIt-Anchor" href="#ref"></a> Ref</h2><ul><li><a href="https://blog.csdn.net/pwl999/article/details/111035160">Gcc 安全编译选项</a></li></ul>]]></content>
     
